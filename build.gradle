@@ -27,6 +27,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     compile group: 'org.flywaydb', name: 'flyway-core', version: '7.6.0'
+
 }
 
 test {
