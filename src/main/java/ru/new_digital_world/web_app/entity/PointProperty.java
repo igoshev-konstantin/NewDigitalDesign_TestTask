@@ -21,14 +21,14 @@ public class PointProperty {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "point_id")
     private Point point;
 
     @Enumerated(EnumType.STRING)
     private PropertiesTypes propertiesTypes;
 
-    @Column(name = "id")
+    @Column(name = "value")
     private short value;
 
 }
