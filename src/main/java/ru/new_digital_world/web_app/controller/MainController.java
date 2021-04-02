@@ -12,7 +12,6 @@ public class MainController {
     private PointService pointService;
 
     @GetMapping("/")
-    @ResponseBody
     public String testController(){
         return "index";
         //return "MyView";
