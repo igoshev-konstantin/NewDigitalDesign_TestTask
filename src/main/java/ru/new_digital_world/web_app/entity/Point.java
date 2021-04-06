@@ -6,14 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Point")
+@Table(name = "pg_point", schema = "public")
 public class Point {
 
     @Id
@@ -24,7 +23,7 @@ public class Point {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "pointNumber")
+    @Column(name = "point_number")
     private short pointNumber;
 
     @Column(name = "coordX")
@@ -33,6 +32,6 @@ public class Point {
     @Column(name = "coordY")
     private double coordY;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "point")
-    private List<PointProperty> propertyList;
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "point")
+//    private List<PointProperty> propertyList;
 }

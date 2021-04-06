@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "PointProperty")
+@Table(name = "pg_point_property", schema = "public")
 public class PointProperty {
 
     @Id

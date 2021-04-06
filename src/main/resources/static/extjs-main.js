@@ -1,33 +1,30 @@
-// Ext.application({
-//     name: 'MyApp',
-//     launch: function () {
-//         //Ext.Msg.alert(this.getName(), 'Ready to go!');
-//         Ext.Msg.alert("ееееееееееее");
-//     }
-// });
 
 Ext.onReady(function () {
 
-    Ext.create('Ext.data.Store', {
-        storeId: 'pointStore',
-        fields: ['id', 'name', 'pointNumber', 'coordX', 'coordY'],
-        data: {
-            'items': [
-                {'id': '1', 'name': 'p1-415', "pointNumber": "415", "coordX": 54.198708, "coordY": 37.606190},
-                {'id': '2', 'name': 'p2-416', "pointNumber": "422", "coordX": 54.298708, "coordY": 37.706191},
-                {'id': '3', 'name': 'p3-417', "pointNumber": "444", "coordX": 54.398708, "coordY": 37.806192},
-                {'id': '4', 'name': 'p3-418', "pointNumber": "425", "coordX": 54.498708, "coordY": 37.906193},
-            ]
-        },
-        proxy: {
-            type: 'memory',
-            reader: {
-                type: 'json',
-                root: 'items'
-            }
-        }
+    //Объявим модель
+    Ext.define('myModel', {
+        extend: 'Ext.data.Model',
+        fields: ['id','name','pointNumber','coordX','coordY']
     });
 
+    //Подключим autoload
+    Ext.create('Ext.data.Store', {
+        model: 'myModel',
+        storeId: "pointStore",
+        pageSize: 50,
+        proxy: {
+            type: 'ajax',
+            url: '/api/getAllPoints',
+            method: "GET",
+            reader: {
+                type: 'json',
+                root: 'data'
+            }
+        },
+        autoLoad: true
+    });
+
+    //Создадим grid с загрузкой storeId
     Ext.create('Ext.grid.Panel', {
         title: 'Points grid',
         height: 200,
@@ -41,7 +38,7 @@ Ext.onReady(function () {
             {text: 'Id', type: 'int', dataIndex: 'id', width: 5, flex: 1},
             {text: 'Name', type: 'string', dataIndex: 'name', width: 40, flex: 1},
             {text: 'Number', type: 'string', dataIndex: 'pointNumber', width: 4, flex: 1},
-            {text: 'Coordinate X', type: 'float',  dataIndex: 'coordX'},
+            {text: 'Coordinate X', type: 'float', dataIndex: 'coordX'},
             {text: 'Coordinate Y', type: 'float', dataIndex: 'coordY'},
 
             {
@@ -61,12 +58,6 @@ Ext.onReady(function () {
                         console.log(rec);
                         console.log(rowIndex);
                         alert("Edit");
-                        //var lastItem = grid.getStore().data.items.length;
-
-                        // var lastItem = grid.getStore().items.length;
-                        // alert(lastItem + 1);
-                        // var rec = grid.getStore().getAt(rowIndex);
-                        // alert("Add " + rec.get('id'));
 
                     }
                 },
@@ -83,6 +74,7 @@ Ext.onReady(function () {
         ]
     });
 
+    //Кнопке
     Ext.create('Ext.Button', {
         text: 'Add new row',
         minWidth: '100',
@@ -95,6 +87,23 @@ Ext.onReady(function () {
         }
     })
 
+    // Ext.create('Ext.data.Store', {
+    //     storeId: 'pointStore',
+    //     fields: ['id', 'name', 'pointNumber', 'coordX', 'coordY'],
+    //     data: {
+    //         'items': [
+    //             {'id': '1', 'name': 'p1-415', "pointNumber": "415", "coordX": 54.198708, "coordY": 37.606190},
+    //             {'id': '2', 'name': 'p2-416', "pointNumber": "422", "coordX": 54.298708, "coordY": 37.706191},
+    //             {'id': '3', 'name': 'p3-417', "pointNumber": "444", "coordX": 54.398708, "coordY": 37.806192},
+    //             {'id': '4', 'name': 'p3-418', "pointNumber": "425", "coordX": 54.498708, "coordY": 37.906193},
+    //         ]
+    //     },
+    //     proxy: {
+    //         type: 'memory',
+    //         reader: {
+    //             type: 'json',
+    //             root: 'items'
+    //         }
+    //     }
+    // });
 });
-
-//#

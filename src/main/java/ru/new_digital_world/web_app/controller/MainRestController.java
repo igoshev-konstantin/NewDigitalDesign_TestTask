@@ -1,9 +1,11 @@
 package ru.new_digital_world.web_app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import ru.new_digital_world.web_app.entity.Point;
 import ru.new_digital_world.web_app.service.PointService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -16,11 +18,24 @@ public class MainRestController {
         this.pointService = pointService;
     }
 
-//
-//    @GetMapping("/addNewPoint")
-//    public void addNewPoint(){
-//
-//    }
+
+    @PostMapping("/savePoint")
+    public void savePoint(@RequestBody Point point){
+        if(!point.getName().isEmpty()){
+            pointService.saveUpdatePoint(point);
+            System.out.println("SavePoint");
+        }else{
+            System.out.println("invalid validation");
+        }
+    }
+
+
+    @GetMapping(value = "/getAllPoints",
+            headers = "Accept=application/json")
+    @ResponseBody()
+    public List<Point> getAllPoints(){
+        return pointService.getAllPoints();
+    }
 
 
 }

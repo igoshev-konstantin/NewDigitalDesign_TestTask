@@ -17,7 +17,11 @@ public class PointService {
         this.pointRepository = pointRepository;
     }
 
-    public List<Point> getAllPoints(){
+    public List<Point> getAllPoints() {
         return pointRepository.findAll();
+    }
+
+    public void saveUpdatePoint(Point point) {
+        pointRepository.save(point);
     }
 }
