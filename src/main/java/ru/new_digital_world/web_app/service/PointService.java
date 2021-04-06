@@ -24,4 +24,8 @@ public class PointService {
     public void saveUpdatePoint(Point point) {
         pointRepository.save(point);
     }
+
+    public void deletePointById(Long id) {
+        pointRepository.deleteById(id);
+    }
 }

@@ -29,12 +29,16 @@ public class MainRestController {
         }
     }
 
-
     @GetMapping(value = "/getAllPoints",
             headers = "Accept=application/json")
     @ResponseBody()
     public List<Point> getAllPoints(){
         return pointService.getAllPoints();
+    }
+
+    @GetMapping(value = "/delete/{id}")
+    public void deletePointById(@PathVariable Long id){
+        pointService.deletePointById(id);
     }
 
 

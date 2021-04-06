@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Setter
 @Getter
@@ -32,6 +33,6 @@ public class Point {
     @Column(name = "coordY")
     private double coordY;
 
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "point")
-//    private List<PointProperty> propertyList;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "point")
+    private List<PointProperty> propertyList;
 }

@@ -1,10 +1,9 @@
-
 Ext.onReady(function () {
 
     //Объявим модель
     Ext.define('myModel', {
         extend: 'Ext.data.Model',
-        fields: ['id','name','pointNumber','coordX','coordY']
+        fields: ['id', 'name', 'pointNumber', 'coordX', 'coordY']
     });
 
     //Подключим autoload
@@ -57,7 +56,9 @@ Ext.onReady(function () {
                         var rec = grid.getStore().getAt(rowIndex);
                         console.log(rec);
                         console.log(rowIndex);
-                        alert("Edit");
+
+
+                        console.log("Edit");
 
                     }
                 },
@@ -67,7 +68,12 @@ Ext.onReady(function () {
                         id: 'deleteRowId',
                         margin: ('0 5 0 5'),
                         handler: function (grid, rowIndex, colIndex) {
-                            alert("delete: " + rowIndex);
+                            const id = grid.getStore().getAt(rowIndex).data.id;
+                            //console.dir(id);
+                            fetch(`/api/delete/${id}`).then(resp => {
+                                if (resp.status == 200)
+                                    window.location.replace("/")
+                            });
                         }
                     }]
             }

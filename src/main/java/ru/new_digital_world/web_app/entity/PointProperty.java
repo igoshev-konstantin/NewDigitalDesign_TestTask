@@ -26,6 +26,7 @@ public class PointProperty {
     private Point point;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "properties_types")
     private PropertiesTypes propertiesTypes;
 
     @Column(name = "value")
