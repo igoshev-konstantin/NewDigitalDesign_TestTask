@@ -1,3 +1,4 @@
+
 plugins {
     id 'org.springframework.boot' version '2.4.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
@@ -26,10 +27,7 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.4.4'
 
 
-//    // https://mvnrepository.com/artifact/gwt-plugin/gwt-plugin
-//    implementation group: 'gwt-plugin', name: 'gwt-plugin', version: '0.1.6'
-//    // https://mvnrepository.com/artifact/com.google.gwt/gwt-servlet
-//    runtimeOnly group: 'com.google.gwt', name: 'gwt-servlet', version: '2.9.0'
-
 
 }
+
+
