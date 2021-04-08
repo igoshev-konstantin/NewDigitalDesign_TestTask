@@ -2,6 +2,7 @@ function CalcMultiply(numberA, numberB) {
     return numberA + numberB;
 }
 
+
 // function getAllPoints(){
 //     const params = {
 //         method: 'GET',

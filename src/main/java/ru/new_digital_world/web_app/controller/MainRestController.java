@@ -1,6 +1,7 @@
 package ru.new_digital_world.web_app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.new_digital_world.web_app.entity.Point;
 import ru.new_digital_world.web_app.service.PointService;
@@ -40,6 +41,5 @@ public class MainRestController {
     public void deletePointById(@PathVariable Long id){
         pointService.deletePointById(id);
     }
-
 
 }

@@ -1,22 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport"-->
-<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
-<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
-
-<!--    <meta contentType="application/json">-->
     <title>Add new point</title>
 
-    <link href="http://cdn.sencha.com/ext/gpl/4.2.0/resources/css/ext-all.css" rel="stylesheet" />
-    <script src="http://cdn.sencha.com/ext/gpl/4.2.0/ext-all.js"> </script>
-    <script type="text/javascript" src ="extjs-addNewPoint.js"></script>
+    <link href="http://cdn.sencha.com/ext/gpl/4.2.0/resources/css/ext-all.css" rel="stylesheet"/>
+    <script src="http://cdn.sencha.com/ext/gpl/4.2.0/ext-all.js"></script>
+    <script type="text/javascript" src="extjs-addNewPoint.js"></script>
 </head>
 <body>
+
 <h3>Please fill fields of new point for adding to the grid</h3>
+
+<input id="pointId_in" hidden="hidden" th:value="${pointId}">
+<input id="pointName_in" hidden="hidden" th:value="${pointName}">
+<input id="pointNumber_in" hidden="hidden" th:value="${pointNumber}">
+<input id="pointCoordX_in" hidden="hidden" th:value="${pointCoordX}">
+<input id="pointCoordY_in" hidden="hidden" th:value="${pointCoordY}">
+
+<!--<p th:text="'pointId, ' + ${pointId} + '!'" />-->
+<!--<p th:text="'pointName, ' + ${pointName} + '!'" />-->
+<!--<p th:text="'pointNumber, ' + ${pointNumber} + '!'" />-->
+<!--<p th:text="'pointCoordX, ' + ${pointCoordX} + '!'" />-->
+<!--<p th:text="'pointCoordY, ' + ${pointCoordY} + '!'" />-->
 <br>
-<div id = "pointPanel"></div>
+<div id="btnUpdate" hidden="hidden"></div>
+<div id="pointPanel"></div>
 <div id="btnSave"></div>
 </body>
 </html>

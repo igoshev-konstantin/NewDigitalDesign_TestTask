@@ -52,14 +52,14 @@ Ext.onReady(function () {
                         margin: '5px 0px 5px 0'
                     },
                     handler: function (grid, rowIndex, colIndex) {
-
-                        var rec = grid.getStore().getAt(rowIndex);
-                        console.log(rec);
-                        console.log(rowIndex);
-
-
+                        const id = grid.getStore().getAt(rowIndex).data.id;
+                        window.location.replace(`/addNewPoint?id=${id}`);
+                        // fetch(`/addNewPoint?id=${id}`).then(resp => {
+                        //     if (resp.status == 200)
+                        //         console.log("send");
+                        //         window.location.replace("/")
+                        // });
                         console.log("Edit");
-
                     }
                 },
                     {
@@ -90,6 +90,19 @@ Ext.onReady(function () {
         renderTo: "btnAddNewRow",
         handler: function () {
             window.location.replace("/addNewPoint");
+        }
+    })
+
+    //Кнопке
+    Ext.create('Ext.Button', {
+        text: 'Map',
+        minWidth: '100',
+        style: {
+            margin: '10px 10px 10px 10px'
+        },
+        renderTo: "btnMap",
+        handler: function () {
+            window.location.replace("/map");
         }
     })
 

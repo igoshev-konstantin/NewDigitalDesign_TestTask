@@ -28,4 +28,7 @@ public class PointService {
     public void deletePointById(Long id) {
         pointRepository.deleteById(id);
     }
+    public Point getPointById(Long id){
+        return pointRepository.getOne(id);
+    }
 }

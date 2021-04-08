@@ -1,55 +1,4 @@
 Ext.onReady(function () {
-    // Ext.define('Point', {
-    //     extend: 'Ext.data.Model',
-    //     renderTo: 'point',
-    //     fields: [
-    //         'name', 'email',
-    //         {name: 'age', type: 'int'},
-    //         {name: 'gender', type: 'string', defaultValue: 'Unknown'}
-    //     ]
-    // });
-
-    // Ext.create('Ext.form.Panel', {
-    //     title: 'Point properties',
-    //     width: 550,
-    //     bodyPadding: 10,
-    //     renderTo: 'point',
-    //     items: [
-    //         {
-    //             xtype: 'fieldcontainer',
-    //             fieldLabel: 'name',
-    //             name: 'name',
-    //             labelWidth: 100,
-    //             layout: 'hbox',
-    //             xtype: 'textfield',
-    //             flex: 1
-    //         },
-    //         {
-    //             xtype: 'fieldcontainer',
-    //             fieldLabel: 'point number',
-    //             name: 'pointNumber',
-    //             labelWidth: 30,
-    //             layout: 'hbox',
-    //             xtype: 'textfield',
-    //         },
-    //         {
-    //             xtype: 'fieldcontainer',
-    //             fieldLabel: 'X',
-    //             name: 'coordX',
-    //             labelWidth: 30,
-    //             layout: 'hbox',
-    //             xtype: 'textfield'
-    //         },
-    //         {
-    //             xtype: 'fieldcontainer',
-    //             fieldLabel: 'Y',
-    //             name: 'coordY',
-    //             labelWidth: 30,
-    //             layout: 'hbox',
-    //             xtype: 'textfield'
-    //         }
-    //     ]
-    // });
 
     Ext.create('Ext.form.Panel', {
         id: "newPointId",
@@ -70,25 +19,27 @@ Ext.onReady(function () {
             defaultType: 'textfield',
             defaults: {anchor: '100%'},
             layout: 'anchor',
+            id: "item_fields",
             items: [{
+                fieldLabel: 'id',
+                inputType: "text",
+                hidden: true,
+                id: "id"
+            }, {
                 fieldLabel: 'Name',
                 inputType: "text",
-                //name: 'name',
                 id: "name"
             }, {
                 fieldLabel: 'Point number',
-                //name: 'pointNumber',
                 id: "pointNumber",
                 inputType: "number"
             }, {
                 fieldLabel: 'X',
-                //name: 'coordX',
                 id: "coordX",
                 inputType: "number",
                 maxLength: 9
             }, {
                 fieldLabel: 'Y',
-                //name: 'coordY',
                 id: "coordY",
                 inputType: "number",
                 maxLength: 9
@@ -96,6 +47,7 @@ Ext.onReady(function () {
         }]
     });
 
+    //Инициализация кнопки. Вешаем на нее событие инициализации POST запроса отправки данных
     Ext.create('Ext.Button', {
         text: 'Save',
         minWidth: '100',
@@ -104,6 +56,7 @@ Ext.onReady(function () {
         },
         renderTo: "btnSave",
         handler: function () {
+            const id = document.getElementById("id-inputEl").value;
             const name = document.getElementById("name-inputEl").value;
             const pointNumber = document.getElementById("pointNumber-inputEl").value;
             const coordX = document.getElementById("coordX-inputEl").value;
@@ -142,4 +95,22 @@ Ext.onReady(function () {
         }
     })
 
+    function fill_fields() {
+        console.log("Update")
+        Ext.getCmp('id').setValue(document.getElementById("pointName_in").value);
+        Ext.getCmp('name').setValue(document.getElementById("pointName_in").value);
+        Ext.getCmp('pointNumber').setValue(document.getElementById("pointNumber_in").value);
+        Ext.getCmp('coordX').setValue(document.getElementById("pointCoordX_in").value);
+        Ext.getCmp('coordY').setValue(document.getElementById("pointCoordY_in").value);
+    }
+  //Кнопке
+    Ext.create('Ext.Button', {
+        text: 'Update',
+        minWidth: '100',
+        style: {
+            margin: '10px 10px 10px 10px'
+        },
+        renderTo: "btnUpdate",
+        handler: fill_fields()
+    })
 });
