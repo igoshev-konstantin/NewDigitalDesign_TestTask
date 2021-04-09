@@ -23,7 +23,9 @@ Ext.onReady(function () {
             items: [{
                 fieldLabel: 'id',
                 inputType: "text",
-                hidden: true,
+                disabled:true,
+
+                // hidden: true,
                 id: "id"
             }, {
                 fieldLabel: 'Name',
@@ -68,7 +70,7 @@ Ext.onReady(function () {
                     'Content-Type': 'application/json;charset=utf-8'
                 },
                 body: JSON.stringify({
-                    id: null,
+                    id: id,
                     name: name,
                     pointNumber: pointNumber,
                     coordX: coordX,
@@ -97,7 +99,7 @@ Ext.onReady(function () {
 
     function fill_fields() {
         console.log("Update")
-        Ext.getCmp('id').setValue(document.getElementById("pointName_in").value);
+        Ext.getCmp('id').setValue(document.getElementById("pointId_in").value);
         Ext.getCmp('name').setValue(document.getElementById("pointName_in").value);
         Ext.getCmp('pointNumber').setValue(document.getElementById("pointNumber_in").value);
         Ext.getCmp('coordX').setValue(document.getElementById("pointCoordX_in").value);
