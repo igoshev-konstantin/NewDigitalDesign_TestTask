@@ -6,7 +6,7 @@ Ext.onReady(function () {
         fields: ['id', 'name', 'pointNumber', 'coordX', 'coordY']
     });
 
-    //Подключим autoload
+    //Подключим store autoload
     Ext.create('Ext.data.Store', {
         model: 'myModel',
         storeId: "pointStore",
@@ -23,7 +23,7 @@ Ext.onReady(function () {
         autoLoad: true
     });
 
-    //Создадим grid с загрузкой storeId
+    //Создадим grid с загрузкой store
     Ext.create('Ext.grid.Panel', {
         title: 'Points grid',
         height: 200,
@@ -105,6 +105,8 @@ Ext.onReady(function () {
             window.location.replace("/map");
         }
     })
+
+
 
     // Ext.create('Ext.data.Store', {
     //     storeId: 'pointStore',
